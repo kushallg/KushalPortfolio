@@ -1,0 +1,1 @@
+This project was made in react with simple components for my minimal portfolio
