@@ -5,7 +5,11 @@ const VerletClothString = ({
   position = '75%', 
   iconSrc = null, 
   iconSize = 32,
-  onClick = null 
+  onClick = null,
+  stringLength = 400,  // New: customizable length
+  stringColor = '#67597A',  // New: customizable color
+  stringWidth = 4,  // New: customizable thickness
+  segments = null  // New: auto-calculate or custom segments
 }) => {
   const canvasRef = useRef();
   const animationRef = useRef();
@@ -24,16 +28,16 @@ const VerletClothString = ({
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     
-    // Calculate canvas dimensions based on string area only
+    // Calculate canvas dimensions based on string area
     const startX = parseInt(position) * window.innerWidth / 100;
-    const stringWidth = 200; // Width of interactive area around string
-    const stringHeight = 500; // Height of string area
+    const canvasWidth = 200; // Width of interactive area around string
+    const canvasHeight = stringLength + 100; // Height based on string length + buffer
     
-    canvas.width = stringWidth;
-    canvas.height = stringHeight;
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
     
     // Position canvas at the string location
-    canvas.style.left = `${startX - stringWidth/2}px`;
+    canvas.style.left = `${startX - canvasWidth/2}px`;
     canvas.style.top = '0px';
 
     // Verlet particle class
@@ -58,6 +62,11 @@ const VerletClothString = ({
 
         this.x += velX;
         this.y += velY + (0.5 * this.mass);
+
+        // Keep particles within canvas bounds
+        if (this.x < 10) this.x = 10;
+        if (this.x > canvasWidth - 10) this.x = canvasWidth - 10;
+        if (this.y > canvasHeight - 20) this.y = canvasHeight - 20;
       }
     }
 
@@ -94,24 +103,26 @@ const VerletClothString = ({
     // Create string particles
     const particles = [];
     const constraints = [];
-    const segments = 20;
-    const centerX = stringWidth / 2; // Center of canvas
-    const segmentLength = 20;
+    
+    // Calculate segments based on string length (auto-calculate if not provided)
+    const numSegments = segments || Math.max(10, Math.floor(stringLength / 20));
+    const centerX = canvasWidth / 2; // Center of canvas
+    const segmentLength = stringLength / numSegments;
 
     // Create particles
-    for (let i = 0; i < segments; i++) {
-      const isLast = i === segments - 1;
+    for (let i = 0; i < numSegments; i++) {
+      const isLast = i === numSegments - 1;
       const particle = new VerletParticle(
         centerX, 
         i * segmentLength, 
-        i === 0,
-        isLast ? 3 : 1
+        i === 0,  // Pin the first particle
+        isLast ? 3 : 1  // Last particle has more mass for icon weight
       );
       particles.push(particle);
     }
 
     // Create constraints
-    for (let i = 0; i < segments - 1; i++) {
+    for (let i = 0; i < numSegments - 1; i++) {
       constraints.push(new Constraint(particles[i], particles[i + 1]));
     }
 
@@ -127,9 +138,9 @@ const VerletClothString = ({
       // Render
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw string
-      ctx.strokeStyle = '#8B4513';
-      ctx.lineWidth = 4;
+      // Draw string with custom color and width
+      ctx.strokeStyle = stringColor;
+      ctx.lineWidth = stringWidth;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.beginPath();
@@ -256,7 +267,7 @@ const VerletClothString = ({
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [position, iconImage, iconSize, onClick]);
+  }, [position, iconImage, iconSize, onClick, stringLength, stringColor, stringWidth, segments]);
 
   return (
     <canvas
