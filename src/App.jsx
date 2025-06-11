@@ -20,21 +20,21 @@ function App() {
       
 
         <VerletClothString 
-  position="75%" 
+  position="78%" 
   iconSrc="src/assets/linkedin.png"
-  iconSize={35}
+  iconSize={32}
   stringLength={350}
-  stringColor="#67597A"
+  stringColor="#cadf9e"
   stringWidth={3}
-  onClick={() => window.open('https://github.com/kushallg', '_blank')}
+  onClick={() => window.open('https://linkedin.com/in/kushalgadamsetty', '_blank')}
 />
 
         <VerletClothString 
-  position="80%" 
+  position="85%" 
   iconSrc="src/assets/github.png"
-  iconSize={35}
-  stringLength={400}
-  stringColor="#544E61"
+  iconSize={32}
+  stringLength={450}
+  stringColor="#cadf9e"
   stringWidth={3}
   onClick={() => window.open('https://github.com/kushallg', '_blank')}
 />

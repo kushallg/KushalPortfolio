@@ -155,37 +155,47 @@ const VerletClothString = ({
       
       ctx.stroke();
 
-      // Draw PNG icon at the last particle position
-      if (iconImage && particles.length > 0) {
-        const lastParticle = particles[particles.length - 1];
-        
-        // Draw icon background circle
-        ctx.fillStyle = '#2c3e50';
-        ctx.beginPath();
-        ctx.arc(lastParticle.x, lastParticle.y, iconSize / 2 + 4, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Add shadow
-        ctx.shadowColor = 'rgba(0,0,0,0.3)';
-        ctx.shadowBlur = 8;
-        ctx.shadowOffsetY = 4;
-        
-        // Draw white inner circle
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.arc(lastParticle.x, lastParticle.y, iconSize / 2, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetY = 0;
-        
-        // Draw PNG icon
-        const iconX = lastParticle.x - iconSize / 2;
-        const iconY = lastParticle.y - iconSize / 2;
-        ctx.drawImage(iconImage, iconX, iconY, iconSize, iconSize);
-      }
+// Draw PNG icon at the last particle position - CIRCULAR CLIPPING
+if (iconImage && particles.length > 0) {
+  const lastParticle = particles[particles.length - 1];
+  
+  // Save the current canvas state
+  ctx.save();
+  
+  // Draw outer shadow circle
+  ctx.fillStyle = '#2c3e50';
+  ctx.beginPath();
+  ctx.arc(lastParticle.x, lastParticle.y, iconSize / 2 + 4, 0, Math.PI * 2);
+  ctx.fill();
+  
+  // Create circular clipping region
+  ctx.beginPath();
+  ctx.arc(lastParticle.x, lastParticle.y, iconSize / 2, 0, Math.PI * 2);
+  ctx.clip();
+  
+  // Draw white background within the clipped circle
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(
+    lastParticle.x - iconSize / 2, 
+    lastParticle.y - iconSize / 2, 
+    iconSize, 
+    iconSize
+  );
+  
+  // Draw PNG icon within the clipped circle
+  const iconX = lastParticle.x - iconSize / 2;
+  const iconY = lastParticle.y - iconSize / 2;
+  ctx.drawImage(iconImage, iconX, iconY, iconSize, iconSize);
+  
+  // Restore the canvas state (removes clipping)
+  ctx.restore();
+}
+
+
+
+
+
+
 
       animationRef.current = requestAnimationFrame(animate);
     };
