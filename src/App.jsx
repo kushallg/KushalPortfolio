@@ -1,11 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-import AnimatedString from './components/AnimatedString';
-import { Linkedin } from 'lucide-react'; // npm install lucide-react
+import CyclingScrambleText from '@/components/CyclingScrambleText';
 import VerletClothString from '@/components/VerletClothString';
+import Button from '@/components/Button';
 
 
 function App() {
@@ -15,9 +11,25 @@ function App() {
       <div>
        <h1 className = "greeting"> Hi!, my name is</h1> 
        <h1 className = "name" >Kushal Gadamsetty</h1> 
-       <h1 className = "position">I'm a Software Engineer.</h1> 
-       
+       <h1 className = "position">I <CyclingScrambleText 
+          words={['code', 'lift','build', 'create']}
+          interval={2100} // 2.5 seconds between changes
+          scrambleConfig={{
+            speed: 0.33,
+            scramble: 6,
+            seed: 1,
+            chance: 1,
+            tick: 1,
+            range: [97, 122], // A-Z, a-z, and some symbols
+            
+          }}
+        />.</h1> 
+        
       
+      <Button className="resume-button" variant="default" 
+      size="default" onClick={() => window.open('/src/assets/resume.pdf', '_blank')}>Resume</Button>
+
+
 
         <VerletClothString 
   position="78%" 
