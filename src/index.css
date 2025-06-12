@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 :root {
-
-
   background-color: #000000;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,7 +18,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 300vh;
 }
 
 .greeting {
@@ -75,7 +73,7 @@ body {
   }
 }
 .Hero {
-  margin: -14rem 10rem 0 15rem;
+  margin: -75rem 10rem 0 15rem;
   opacity: 0; 
   animation-name: fadeIn;
   animation-duration: 1.25s; /* Set the duration of the fade-in animation */
@@ -84,3 +82,36 @@ body {
 
 }
   
+
+@media (max-width: 1000px) {
+  .Hero {
+    margin: 10rem 0 0 0;
+    text-align: center;
+    display: block;
+    size: cover;
+  }
+  .name {
+    font-size: 3rem;
+  }
+  .position {
+    margin-top: 1rem;
+    font-size: 3rem;
+  }
+  .resume-button {
+    margin-left: -20rem; /* Adjusted for smaller screens */
+    font-size: 1.25rem; /* text-2xl */
+    margin-left: 0rem;
+  }
+  .strings {
+    display: none;
+    
+  }
+  body {
+  margin: 0;
+  display: wrap;
+  place-items: center;
+  min-width: 100px;
+  min-height: 50vh;
+}
+
+}

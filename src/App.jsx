@@ -43,7 +43,7 @@ function App() {
           Resume
         </Button>
         </div>
-
+          <div className="strings">
         <VerletClothString
           position="78%"
           iconSrc={linkedinIcon}
@@ -63,6 +63,7 @@ function App() {
           stringWidth={3}
           onClick={() => window.open('https://github.com/kushallg', '_blank')}
         />
+        </div>
 
       </div>
     </>
