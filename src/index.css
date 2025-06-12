@@ -28,6 +28,8 @@ body {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+  color: #213547;
+  border: 2px solid transparent;
 }
 
 
@@ -35,9 +37,6 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
   }
   button {
     background-color: #f9f9f9;
@@ -84,8 +83,16 @@ margin: -16rem 10rem 0 16rem;
   font-size: 1.25rem; /* text-2xl */
   font-family: monospace; /* font-mono */   
   align-items: center;
+  background-color: black;
+  color: white;
+  box-shadow: 4px 4px 0 0 #cadf9e;
+  border-color: #cadf9e;
+ 
 }
-
-button:hover {
-  border-color: #646cff;
+.resume-button:hover {
+  background-color: #857f74;
+  color: #000;
+  box-shadow: none;
+  transform: translate(-4px, -4px);
+   border-color: black;
 }

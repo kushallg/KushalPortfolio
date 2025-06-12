@@ -25,8 +25,9 @@ function App() {
               scramble: 6,
               seed: 1,
               chance: 1,
-              tick: 1,
-              range: [97, 122], // a-z
+              tick: 2,
+              range: [65,93][98, 122], // a-z
+              overdrive: false,
             }}
           />
           .
@@ -46,7 +47,7 @@ function App() {
           iconSrc={linkedinIcon}
           iconSize={32}
           stringLength={350}
-          stringColor="#cadf9e"
+          stringColor="#E2125F"
           stringWidth={3}
           onClick={() => window.open('https://linkedin.com/in/kushalgadamsetty', '_blank')}
         />
@@ -56,7 +57,7 @@ function App() {
           iconSrc={githubIcon}
           iconSize={32}
           stringLength={450}
-          stringColor="#cadf9e"
+          stringColor="#E2125F"
           stringWidth={3}
           onClick={() => window.open('https://github.com/kushallg', '_blank')}
         />

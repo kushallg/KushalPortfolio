@@ -19,7 +19,7 @@ const CyclingScrambleText = ({
     scramble: 4,
     seed: 2,
     chance: 1.0,
-    range: [65, 125], // A-Z, a-z, and some symbols
+    range: [97, 122], // A-Z, a-z, and some symbols
     playOnMount: true,
     ...scrambleConfig
   });
