@@ -18,7 +18,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 300vh;
+  min-height: 90vh;
 }
 
 .greeting {
@@ -73,7 +73,7 @@ body {
   }
 }
 .Hero {
-  margin: -75rem 10rem 0 15rem;
+  margin: -6rem 10rem 0 15rem;
   opacity: 0; 
   animation-name: fadeIn;
   animation-duration: 1.25s; /* Set the duration of the fade-in animation */
