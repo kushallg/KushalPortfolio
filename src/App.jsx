@@ -27,13 +27,13 @@ function App() {
         
       
       <Button className="resume-button" variant="default" 
-      size="default" onClick={() => window.open('/src/assets/resume.pdf', '_blank')}>Resume</Button>
+      size="default" onClick={() => window.open('./src/assets/resume.pdf', '_blank')}>Resume</Button>
 
 
 
         <VerletClothString 
   position="78%" 
-  iconSrc="src/assets/linkedin.png"
+  iconSrc="./src/assets/linkedin.png"
   iconSize={32}
   stringLength={350}
   stringColor="#cadf9e"
@@ -43,7 +43,7 @@ function App() {
 
         <VerletClothString 
   position="85%" 
-  iconSrc="src/assets/github.png"
+  iconSrc="./src/assets/github.png"
   iconSize={32}
   stringLength={450}
   stringColor="#cadf9e"
