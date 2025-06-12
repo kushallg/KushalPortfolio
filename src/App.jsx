@@ -13,15 +13,16 @@ function App() {
   return (
     <>
       <div>
+        <div className = "Hero">
         <h1 className="greeting">Hi!, my name is</h1>
         <h1 className="name">Kushal Gadamsetty</h1>
         <h1 className="position">
           I{' '}
           <CyclingScrambleText 
             words={['code', 'lift', 'build', 'create', 'prompt']}
-            interval={2100} // 2.5 seconds between changes
+            interval={2400} // 2.5 seconds between changes
             scrambleConfig={{
-              speed: 0.33,
+              speed: 0.3,
               scramble: 6,
               seed: 1,
               chance: 1,
@@ -41,6 +42,7 @@ function App() {
         >
           Resume
         </Button>
+        </div>
 
         <VerletClothString
           position="78%"
