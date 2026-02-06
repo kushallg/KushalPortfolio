@@ -1,6 +1,6 @@
 // Navigation.jsx
 import React, { useState } from 'react';
-import { Menu, X, Twitter, Youtube, Github } from 'lucide-react';
+import { Menu, X, Twitter, Github } from 'lucide-react';
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ const Navigation = () => {
             { label: 'Writing', href: '#writing' },
         ],
         projects: [
-            { label: 'Stack', href: '#stack' },
+            { label: 'Reading', href: '#reading' },
             { label: 'Listening', href: '#listening' },
             { label: 'Good websites', href: '#good-websites' },
         ],
@@ -21,7 +21,6 @@ const Navigation = () => {
 
     const socialLinks = [
         { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-        { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
         { icon: Github, href: 'https://github.com/kushallg', label: 'GitHub' },
     ];
 
