@@ -31,14 +31,14 @@ function Home() {
           .
         </h1>
 
-        <Button
+        {/* <Button
           className="resume-button"
           variant="default"
           size="default"
           onClick={() => window.open(resumePDF, '_blank')}
         >
           Resume
-        </Button>
+        </Button> */}
       </div>
       <div className="strings">
         <VerletClothString
