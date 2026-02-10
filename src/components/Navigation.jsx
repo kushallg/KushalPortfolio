@@ -1,5 +1,6 @@
 // Navigation.jsx
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Twitter, Github } from 'lucide-react';
 
 const Navigation = () => {
@@ -9,13 +10,14 @@ const Navigation = () => {
 
     const menuItems = {
         main: [
-            { label: 'Home', href: '#' },
-            { label: 'Writing', href: '#writing' },
+            { label: 'Home', to: '/' },
+            { label: 'Writing', to: '/writing' },
         ],
         projects: [
-            { label: 'Reading', href: '#reading' },
-            { label: 'Listening', href: '#listening' },
-            { label: 'Good websites', href: '#good-websites' },
+            { label: 'TIL', to: '/til' },
+            { label: 'Reading', to: '/reading' },
+            { label: 'Listening', to: '/listening' },
+            { label: 'Good websites', to: '/good-websites' },
         ],
     };
 
@@ -46,13 +48,13 @@ const Navigation = () => {
                     <ul className="nav-list nav-list--main">
                         {menuItems.main.map((item) => (
                             <li key={item.label}>
-                                <a
-                                    href={item.href}
+                                <Link
+                                    to={item.to}
                                     className="nav-link nav-link--main"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {item.label}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -63,13 +65,13 @@ const Navigation = () => {
                         <ul className="nav-list nav-list--projects">
                             {menuItems.projects.map((item) => (
                                 <li key={item.label}>
-                                    <a
-                                        href={item.href}
+                                    <Link
+                                        to={item.to}
                                         className="nav-link nav-link--project"
                                         onClick={() => setIsOpen(false)}
                                     >
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

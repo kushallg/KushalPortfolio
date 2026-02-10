@@ -1,0 +1,131 @@
+/* CRITICAL: Override global styles that break the Writing page layout */
+
+/* Override :root constraints */
+:root:has(.writing-container) {
+  max-width: 100% !important;
+  padding: 0 !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+/* Override body flex centering */
+body:has(.writing-container) {
+  display: block !important;
+  place-items: initial !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Override #root if it exists */
+#root:has(.writing-container) {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Now apply the mockup styles exactly as they are */
+.writing-container {
+  background: #000000;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 3rem 1.5rem;
+  min-height: 100vh;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.writing-title {
+  font-family: 'Times New Roman', serif;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.writing-year-section {
+  margin-bottom: 3.5rem;
+}
+
+.writing-year {
+  font-family: monospace;
+  font-size: 1rem;
+  color: #857f74;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.writing-posts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.writing-post-item {
+  margin-bottom: 0.75rem;
+}
+
+.writing-post-link {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  gap: 1rem;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.writing-post-link:hover {
+  color: #cadf9e;
+  border-bottom-color: #cadf9e;
+  padding-left: 0.5rem;
+}
+
+.writing-post-link:hover .writing-post-date {
+  color: #cadf9e;
+}
+
+.writing-post-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  flex: 1;
+}
+
+.writing-post-date {
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: #857f74;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.writing-divider {
+  width: 100%;
+  height: 2px;
+  background: #cadf9e;
+  margin: 2rem 0;
+  opacity: 0.3;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .writing-container {
+    padding: 2rem 1rem;
+  }
+
+  .writing-title {
+    font-size: 2.5rem;
+  }
+
+  .writing-post-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .writing-post-title {
+    font-size: 1.125rem;
+  }
+}
