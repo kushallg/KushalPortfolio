@@ -16,7 +16,7 @@ function Home() {
         <h1 className="position">
           I{' '}
           <CyclingScrambleText
-            words={['code', 'lift', 'build', 'learn', 'prompt']}
+            words={['code', 'lift', 'build', 'learn', 'ship']}
             interval={2400} // 2.5 seconds between changes
             scrambleConfig={{
               speed: 0.3,
