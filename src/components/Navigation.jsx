@@ -13,12 +13,6 @@ const Navigation = () => {
             { label: 'Home', to: '/' },
             { label: 'Writing', to: '/writing' },
         ],
-        projects: [
-            { label: 'TIL', to: '/til' },
-            { label: 'Reading', to: '/reading' },
-            { label: 'Listening', to: '/listening' },
-            { label: 'Good websites', to: '/good-websites' },
-        ],
     };
 
     const socialLinks = [
@@ -58,24 +52,6 @@ const Navigation = () => {
                             </li>
                         ))}
                     </ul>
-
-                    {/* Projects Section */}
-                    <div className="nav-section">
-                        <span className="nav-section-label">Projects</span>
-                        <ul className="nav-list nav-list--projects">
-                            {menuItems.projects.map((item) => (
-                                <li key={item.label}>
-                                    <Link
-                                        to={item.to}
-                                        className="nav-link nav-link--project"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
 
                     {/* Social Icons */}
                     <div className="nav-social">
