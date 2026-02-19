@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation';
 import Home from '@/pages/Home';
 import Writing from '@/pages/Writing';
 import BlogPost from '@/pages/BlogPost';
+import Listening from '@/pages/Listening';
 import '@/components/Navigation.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/writing" element={<Writing />} />
         <Route path="/writing/:slug" element={<BlogPost />} />
+        <Route path="/listening" element={<Listening />} />
       </Routes>
     </Router>
   );

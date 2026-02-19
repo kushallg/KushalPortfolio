@@ -12,6 +12,7 @@ const Navigation = () => {
         main: [
             { label: 'Home', to: '/' },
             { label: 'Writing', to: '/writing' },
+            { label: 'Listening', to: '/listening' },
         ],
     };
 

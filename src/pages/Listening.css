@@ -1,0 +1,370 @@
+/* Override global styles */
+:root:has(.listening-container) {
+  max-width: 100% !important;
+  padding: 0 !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+body:has(.listening-container) {
+  display: block !important;
+  place-items: initial !important;
+  align-items: initial !important;
+  justify-content: initial !important;
+  justify-items: initial !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+}
+
+#root:has(.listening-container) {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ── Container ─────────────────────────────────────────────────────────────── */
+
+.listening-container {
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 3rem 1.5rem 5rem;
+  min-height: 100vh;
+  max-width: 720px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+
+.listening-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.listening-title {
+  font-family: 'Times New Roman', serif;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+}
+
+/* ── View toggle ─────────────────────────────────────────────────────────────── */
+
+.view-toggle {
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.25rem;
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  margin-bottom: 0.3rem;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.45rem;
+  border-radius: 4px;
+  color: #333;
+  transition: color 0.2s ease, background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.toggle-btn.active {
+  background: #1a1a1a;
+  color: #cadf9e;
+}
+
+.toggle-btn:hover:not(.active) {
+  color: #857f74;
+}
+
+/* ── Transition ─────────────────────────────────────────────────────────────── */
+
+.listening-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.listening-content.fading {
+  opacity: 0;
+  transform: translateY(7px);
+}
+
+/* ── Status / Error ──────────────────────────────────────────────────────────── */
+
+.listening-status {
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: #857f74;
+  margin-top: 2rem;
+}
+
+.listening-error {
+  color: #e57373;
+}
+
+/* ── FEED VIEW ───────────────────────────────────────────────────────────────── */
+
+.date-group {
+  margin-bottom: 0;
+}
+
+.date-header {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 0 0.4rem;
+  position: sticky;
+  top: 0;
+  background: #000;
+  z-index: 10;
+  gap: 0.5rem;
+}
+
+.date-text {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #cadf9e;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.date-line {
+  flex: 1;
+  height: 1px;
+  background: #111;
+}
+
+/* Now playing pulse dot */
+.now-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cadf9e;
+  flex-shrink: 0;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+.track-list {
+  list-style: none;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.55rem 0;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #0a0a0a;
+  transition: background 0.15s ease;
+}
+
+.track:hover {
+  background: #0d0d0d;
+}
+
+.track:hover .track-title {
+  color: #cadf9e;
+}
+
+.track-art {
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.track-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.track-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sep {
+  color: #222;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.track-artist {
+  font-size: 0.8rem;
+  color: #857f74;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.track-time {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #2a2a2a;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-left: 1rem;
+}
+
+/* ── GRID VIEW ───────────────────────────────────────────────────────────────── */
+
+.listening-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.tile {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  min-width: 0; /* prevent CSS Grid from using image's natural width as minimum */
+}
+
+.tile-art-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.tile:hover .tile-art-wrap {
+  transform: translateY(-3px);
+}
+
+.tile-art-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #cadf9e;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tile:hover .tile-art-wrap::after {
+  opacity: 1;
+}
+
+.tile-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tile:hover .tile-overlay {
+  opacity: 1;
+}
+
+.tile-overlay span {
+  font-size: 0.68rem;
+  color: #cadf9e;
+  font-family: monospace;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.tile-info {
+  margin-top: 0.5rem;
+}
+
+.tile-title {
+  font-size: 0.8rem;
+  color: #e0e0e0;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+
+.tile:hover .tile-title {
+  color: #cadf9e;
+}
+
+.tile-artist {
+  font-size: 0.72rem;
+  color: #857f74;
+  margin-top: 0.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Album art placeholder (when image fails or is missing) ─────────────────── */
+
+.art-placeholder {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .listening-container {
+    padding: 2rem 1rem 4rem;
+  }
+
+  .listening-title {
+    font-size: 2.5rem;
+  }
+
+  .listening-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .sep,
+  .track-artist {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .listening-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
